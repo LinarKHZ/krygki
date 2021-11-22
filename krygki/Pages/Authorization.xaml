@@ -1,0 +1,97 @@
+﻿<Page x:Class="krygki.Pages.Authorization"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:krygki"
+      mc:Ignorable="d" 
+      Loaded="Page_Loaded"
+      Width="1920" Height="1040"
+      Title="Authorization">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="390"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Авторизация"
+                   HorizontalAlignment="Center"
+                   FontSize="35"
+                   Grid.Column="1"
+                   Grid.Row="1"/>
+        <TextBox x:Name="Logn"
+                 Text="Логин"
+                 GotFocus="Logn_GotFocus"
+                 LostFocus="Logn_LostFocus"
+                 Grid.Column="1"
+                 Grid.Row="1" 
+                 Margin="0,102,0,223" FontSize="23" FontFamily="Arial" VerticalContentAlignment="Center"/>
+        <Border BorderBrush="#DADADA"
+                BorderThickness="1"
+                Grid.Column="1" 
+                Grid.Row="1" 
+                Margin="0,192,0,135">
+            <Grid>
+                <TextBox x:Name="PassText"
+                         Text="Пароль"
+                         GotFocus="PassText_GotFocus"
+                         Margin="0,0,31,0"
+                         BorderBrush="White"
+                         Height="Auto" FontSize="23" FontFamily="Arial" VerticalContentAlignment="Center"/>
+                <PasswordBox x:Name="Pass"
+                         Margin="0,0,33,0"
+                         LostFocus="Pass_LostFocus"
+                         Visibility="Hidden"
+                         FontSize="23"
+                         BorderBrush="White"
+                         Background="White"
+                         VerticalContentAlignment="Center"
+                         Padding="10,0,0,0"
+                         KeyUp="Grid_KeyUp"/>
+                <Border MouseLeftButtonDown="Path_Click" 
+                        Grid.Column="1" 
+                        Background="White"
+                        Margin="267,0,0,0" 
+                        Grid.Row="1">
+                    <Path Grid.Column="1" 
+                          Data="M12 5C7 5 2.73 8.11 1 12.5C2.73 16.89 7 20 12 20C17 20 21.27 16.89 23 12.5C21.27 8.11 17 5 12 5ZM12 17.5C9.24 17.5 7 15.26 7 12.5C7 9.74 9.24 7.5 12 7.5C14.76 7.5 17 9.74 17 12.5C17 15.26 14.76 17.5 12 17.5ZM12 9.5C10.34 9.5 9 10.84 9 12.5C9 14.16 10.34 15.5 12 15.5C13.66 15.5 15 14.16 15 12.5C15 10.84 13.66 9.5 12 9.5Z"
+                          Fill="black" 
+                          VerticalAlignment="Center"
+                          Opacity="0.6" 
+                          Stretch="Fill" 
+                          Margin="5.5,25.75,6,24" 
+                          Height="11.25"/>
+                </Border>
+            </Grid>
+        </Border>
+        <Button Content="ВОЙТИ"
+                x:Name="But"
+                Background="#FA823C"
+                FontSize="16"
+                Foreground="White"
+                Height="50"
+                Grid.Column="1"
+                Grid.Row="1"
+                Margin="0,240,0,0"
+                Click="Enter_Click"/>
+        <CheckBox x:Name="SaveMe"
+                  Content="Запомнить меня"
+                  Grid.Column="1" 
+                  Grid.Row="1"
+                  Margin="94,0,94,22"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Bottom"/>
+        <TextBlock HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" FontFamily="Arial">
+                <Hyperlink Click="Hyperlink_Click">
+                    У меня нет аккаунта
+                </Hyperlink>
+        </TextBlock>
+        <Button x:Name="Exit" Content="Выход" HorizontalAlignment="Left" Margin="700,245,0,0" VerticalAlignment="Top" Width="90" Height="50" FontSize="23" Click="Exit_Click" Grid.Column="2" Grid.Row="2"/>
+    </Grid>
+</Page>

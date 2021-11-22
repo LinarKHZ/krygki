@@ -1,0 +1,43 @@
+﻿<Page x:Class="krygki.Pages.MainMenu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:krygki.Pages"
+      mc:Ignorable="d" Width="1920" Height="1040"
+      
+      Title="MainMenu">
+
+    <Grid Background="#f5f0ec">
+
+
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="500" Margin="1341,79,0,0" VerticalAlignment="Top" Width="500">
+            <Image x:Name="UserPhoto"
+               Source = "{Binding Photo}" Height="500" 
+               />
+        </Border>
+        <TextBlock HorizontalAlignment="Left" Margin="1340,605,0,0" TextWrapping="Wrap" Text="Фамилия" VerticalAlignment="Top" FontSize="23" FontFamily="Arial" Height="28" Width="100"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="40" Margin="1460,600,0,0" VerticalAlignment="Top" Width="380">
+            <TextBlock x:Name="FirstName" TextWrapping="Wrap" Text="FirstName" FontSize="23" Padding="10,1,0,0" UseLayoutRounding="True"/>
+        </Border>
+        <TextBlock HorizontalAlignment="Left" Margin="1340,665,0,0" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top" FontSize="23" FontFamily="Arial" Height="28" Width="100"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="40" Margin="1460,660,0,0" VerticalAlignment="Top" Width="380">
+            <TextBlock x:Name="Name1" TextWrapping="Wrap" Text="Name" FontSize="23" Padding="10,1,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True"/>
+        </Border>
+        <TextBlock HorizontalAlignment="Left" Margin="1340,725,0,0" TextWrapping="Wrap" Text="Отчество" VerticalAlignment="Top" FontSize="23" FontFamily="Arial" Height="28" Width="100"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="40" Margin="1460,720,0,0" VerticalAlignment="Top" Width="380">
+            <TextBlock x:Name="Patronymic" TextWrapping="Wrap" Text="Patronymic" FontSize="23" Padding="10,1,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True"/>
+        </Border>
+        <Button x:Name="Click_1" Content="Расписание" HorizontalAlignment="Left" Margin="480,240,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Click_1_Click"/>
+        <Button x:Name="Click_2" Content="Список учеников" HorizontalAlignment="Left" Margin="480,340,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Click_2_Click" />
+        <TextBlock HorizontalAlignment="Left" Height="129" Margin="80,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="1070" FontSize="48" FontFamily="Arial" TextAlignment="Center" FontWeight="Bold" Text="Кружки"/>
+        <Button x:Name="Click_3" Content="Список учитилей" HorizontalAlignment="Left" Margin="480,440,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Click_3_Click" />
+        <TextBlock x:Name="time" HorizontalAlignment="Left" Margin="1440,852,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="36" FontFamily="Arial" Height="60" Width="320" TextAlignment="Center"/>
+        <Button x:Name="Click_4" Content="История посещения" HorizontalAlignment="Left" Margin="480,540,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Click_4_Click" />
+        <TextBlock x:Name="AdminText" HorizontalAlignment="Left" Margin="1150,80,0,0" TextWrapping="Wrap" Text="Admin Panel" VerticalAlignment="Top" FontSize="23" FontFamily="Arial"/>
+        <Button x:Name="Click_5" Content="Новый предмет" HorizontalAlignment="Left" Margin="760,440,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Click_5_Click" />
+        <Button x:Name="Exit" Content="Выход" HorizontalAlignment="Left" Margin="1810,960,0,0" VerticalAlignment="Top" Width="90" Height="50" FontSize="23" Click="Exit_Click"/>
+        <Button x:Name="Click_6" Content="Новый ученик" HorizontalAlignment="Left" Margin="760,240,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Click_6_Click"/>
+        <Button x:Name="Click_7" Content="Новый учитель" HorizontalAlignment="Left" Margin="760,340,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Click_7_Click"/>
+    </Grid>
+</Page>
