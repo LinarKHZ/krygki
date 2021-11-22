@@ -1,0 +1,41 @@
+﻿<Page x:Class="krygki.Pages.AddTimetable"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:krygki.Pages"
+      mc:Ignorable="d" Width="1920" Height="1040"
+      Title="AddClient">
+
+    <Grid Background="#f5f0ec">
+        <Rectangle Fill="#FF5A5AFF" Height="180" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="161,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" FontFamily="Arial" Width="485"><Run Text="Добавление "/><Run Text="Учителя"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="96,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="23" FontFamily="Arial" Height="28" Width="145"><Run Text="День "/><Run Text="н"/><Run Text="едели"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="96,305,0,0" TextWrapping="Wrap" Text="Время начала" VerticalAlignment="Top" FontSize="23" FontFamily="Arial" Height="28" Width="153"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="40" Margin="280,300,0,0" VerticalAlignment="Top" Width="380">
+            <TextBox x:Name="Time_Start" TextWrapping="Wrap" Text="Time_Start" FontSize="23" Padding="10,1,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True"/>
+        </Border>
+        <TextBlock HorizontalAlignment="Left" Margin="96,365,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="23" FontFamily="Arial" Height="28" Width="190"><Run Text="Время "/><Run Text="конца"/></TextBlock>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="40" Margin="280,360,0,0" VerticalAlignment="Top" Width="380">
+            <TextBox x:Name="Time_End" TextWrapping="Wrap" Text="Time_End" FontSize="23" Padding="10,1,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True"/>
+        </Border>
+        <TextBlock HorizontalAlignment="Left" Margin="96,425,0,0" TextWrapping="Wrap" Text="Кружок" VerticalAlignment="Top" FontSize="23" FontFamily="Arial" Height="28" Width="164"/>
+        <TextBlock HorizontalAlignment="Left" Margin="96,485,0,0" TextWrapping="Wrap" Text="Учитель" VerticalAlignment="Top" FontSize="23" FontFamily="Arial" Height="28" Width="164" RenderTransformOrigin="0.5,0.5"/>
+        <TextBlock HorizontalAlignment="Left" Margin="96,545,0,0" TextWrapping="Wrap" Text="Кабинет" VerticalAlignment="Top" FontSize="23" FontFamily="Arial" Height="28" Width="100"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="40" Margin="280,540,0,0" VerticalAlignment="Top" Width="380">
+            <TextBox x:Name="cabinet" TextWrapping="Wrap" Text="Telephone" FontSize="23" Padding="10,1,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" TextChanged="Telephone_TextChanged"/>
+        </Border>
+        <Button x:Name="Exit" Content="Отмена" HorizontalAlignment="Left" Margin="160,880,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Exit_Click" />
+        <Button x:Name="Save" Content="Сохранить" HorizontalAlignment="Left" Margin="480,881,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Save_Click" />
+        <TextBlock HorizontalAlignment="Left" Margin="96,605,0,0" TextWrapping="Wrap" Text="Категория" VerticalAlignment="Top" FontSize="23" FontFamily="Arial" Height="28" Width="112"/>
+        <ComboBox x:Name="CategoryComboBox" HorizontalAlignment="Left" Height="40" Margin="280,600,0,0" VerticalAlignment="Top" Width="380" FontSize="23" FontFamily="Arial">
+            <ComboBoxItem>Неактивный</ComboBoxItem>
+            <ComboBoxItem IsSelected="True">Активный</ComboBoxItem>
+        </ComboBox>
+        <ComboBox x:Name="WeeK_Combo" HorizontalAlignment="Left" Height="40" Margin="280,240,0,0" VerticalAlignment="Top" Width="380" FontSize="23" FontFamily="Arial" 
+                  DisplayMemberPath="Name"
+                  SelectedItem="{Binding TypeUnit}"/>
+        <ComboBox x:Name="Club_Combo" HorizontalAlignment="Left" Height="40" Margin="280,420,0,0" VerticalAlignment="Top" Width="380" FontSize="23" FontFamily="Arial"/>
+        <ComboBox x:Name="User_Combo" HorizontalAlignment="Left" Height="40" Margin="280,480,0,0" VerticalAlignment="Top" Width="380" FontSize="23" FontFamily="Arial"/>
+    </Grid>
+</Page>

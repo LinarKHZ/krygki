@@ -81,6 +81,9 @@
     <Compile Include="Pages\AddStudent.xaml.cs">
       <DependentUpon>AddStudent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddTimetable.xaml.cs">
+      <DependentUpon>AddTimetable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AddUser.xaml.cs">
       <DependentUpon>AddUser.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,9 @@
     </Compile>
     <Compile Include="Pages\TableStudent.xaml.cs">
       <DependentUpon>TableStudent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Tabletime.xaml.cs">
+      <DependentUpon>Tabletime.xaml</DependentUpon>
     </Compile>
     <Compile Include="Role.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -140,6 +146,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AddTimetable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AddUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -157,6 +167,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\TableStudent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Tabletime.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -216,39 +230,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Resource Include="Photo\Admin.jpg" />
-    <Content Include="Photo\F1.jfif" />
-    <Content Include="Photo\F10.jfif" />
-    <Content Include="Photo\F11.jfif" />
-    <Content Include="Photo\F12.jfif" />
-    <Content Include="Photo\F13.jfif" />
-    <Content Include="Photo\F14.jfif" />
-    <Content Include="Photo\F15.jfif" />
-    <Content Include="Photo\F16.jfif" />
-    <Content Include="Photo\F17.jfif" />
-    <Content Include="Photo\F18.jfif" />
-    <Content Include="Photo\F19.jfif" />
-    <Content Include="Photo\F2.jfif" />
-    <Content Include="Photo\F20.jfif" />
-    <Content Include="Photo\F21.jfif" />
-    <Content Include="Photo\F22.jfif" />
-    <Content Include="Photo\F23.jfif" />
-    <Content Include="Photo\F3.jfif" />
-    <Content Include="Photo\F4.jfif" />
-    <Content Include="Photo\F5.jfif" />
-    <Content Include="Photo\F6.jfif" />
-    <Content Include="Photo\F7.jfif" />
-    <Content Include="Photo\F8.jfif" />
-    <Content Include="Photo\F9.jfif" />
-    <Content Include="Photo\M1.jfif" />
-    <Content Include="Photo\M2.jfif" />
-    <Content Include="Photo\M3.jfif" />
-    <Content Include="Photo\M4.jfif" />
-    <Content Include="Photo\M5.jfif" />
-    <Content Include="Photo\M6.jfif" />
-    <Content Include="Photo\M7.jfif" />
-    <Content Include="Photo\M8.jfif" />
-    <Content Include="Photo\M9.jfif" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

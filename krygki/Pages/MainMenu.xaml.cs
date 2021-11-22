@@ -52,7 +52,7 @@ namespace krygki.Pages
 
         private void Click_1_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(new ClientList());
+            NavigationService.Navigate(new Tabletime());
             //asdasd
         }
 
