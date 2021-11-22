@@ -149,6 +149,7 @@ namespace krygki.Pages
         bool sortFirstname = true;
         bool sortPatronymic = true;
         bool sortCategory = true;
+        bool sortCategory1 = true;
         private void Id_Sort(object sender, MouseButtonEventArgs e)
         {
             if (sortId)
@@ -190,6 +191,13 @@ namespace krygki.Pages
                 TableL.ItemsSource = ((List<User>)TableL.ItemsSource).OrderBy(x => x.Id_role).ToList();
             else TableL.ItemsSource = ((List<User>)TableL.ItemsSource).OrderByDescending(x => x.Id_role).ToList();
             sortCategory = !sortCategory;
+        }
+        private void Status_Sort(object sender, MouseButtonEventArgs e)
+        {
+            if (sortCategory1)
+                TableL.ItemsSource = ((List<Student>)TableL.ItemsSource).OrderBy(x => x.Status).ToList();
+            else TableL.ItemsSource = ((List<Student>)TableL.ItemsSource).OrderByDescending(x => x.Status).ToList();
+            sortCategory1 = !sortCategory1;
         }
     }
 }

@@ -223,6 +223,20 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+                    <GridViewColumn Width="190">
+                        <GridViewColumn.Header>
+                            <TextBlock Text="Статус" MouseLeftButtonDown="Status_Sort"/>
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path = Status}"
+                                           FontSize="22"
+                                           TextWrapping="Wrap"
+                                           
+                                           />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
