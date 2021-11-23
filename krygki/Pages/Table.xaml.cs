@@ -111,7 +111,7 @@ namespace krygki.Pages
                 Search.Text = "Название, комментарий...";
             else
             {
-                Refresh();
+                FilterSearch();
             }
         }
 

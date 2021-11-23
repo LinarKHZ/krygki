@@ -95,5 +95,10 @@ namespace krygki.Pages
             NavigationService.Navigate(new AddUser(null, false));
 
         }
+
+        private void Click_8_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddTimetable(null, false));
+        }
     }
 }

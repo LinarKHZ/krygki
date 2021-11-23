@@ -23,7 +23,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="96,485,0,0" TextWrapping="Wrap" Text="Учитель" VerticalAlignment="Top" FontSize="23" FontFamily="Arial" Height="28" Width="164" RenderTransformOrigin="0.5,0.5"/>
         <TextBlock HorizontalAlignment="Left" Margin="96,545,0,0" TextWrapping="Wrap" Text="Кабинет" VerticalAlignment="Top" FontSize="23" FontFamily="Arial" Height="28" Width="100"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="40" Margin="280,540,0,0" VerticalAlignment="Top" Width="380">
-            <TextBox x:Name="cabinet" TextWrapping="Wrap" Text="Telephone" FontSize="23" Padding="10,1,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" TextChanged="Telephone_TextChanged"/>
+            <TextBox x:Name="cabinet" TextWrapping="Wrap" Text="cabinet" FontSize="23" Padding="10,1,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True"/>
         </Border>
         <Button x:Name="Exit" Content="Отмена" HorizontalAlignment="Left" Margin="160,880,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Exit_Click" />
         <Button x:Name="Save" Content="Сохранить" HorizontalAlignment="Left" Margin="480,881,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Save_Click" />
@@ -33,9 +33,10 @@
             <ComboBoxItem IsSelected="True">Активный</ComboBoxItem>
         </ComboBox>
         <ComboBox x:Name="WeeK_Combo" HorizontalAlignment="Left" Height="40" Margin="280,240,0,0" VerticalAlignment="Top" Width="380" FontSize="23" FontFamily="Arial" 
-                  DisplayMemberPath="Name"
-                  SelectedItem="{Binding TypeUnit}"/>
-        <ComboBox x:Name="Club_Combo" HorizontalAlignment="Left" Height="40" Margin="280,420,0,0" VerticalAlignment="Top" Width="380" FontSize="23" FontFamily="Arial"/>
-        <ComboBox x:Name="User_Combo" HorizontalAlignment="Left" Height="40" Margin="280,480,0,0" VerticalAlignment="Top" Width="380" FontSize="23" FontFamily="Arial"/>
+                  DisplayMemberPath="Name"/>
+        <ComboBox x:Name="Club_Combo" HorizontalAlignment="Left" Height="40" Margin="280,420,0,0" VerticalAlignment="Top" Width="380" FontSize="23" FontFamily="Arial"
+                  DisplayMemberPath="Name"/>
+        <ComboBox x:Name="User_Combo" HorizontalAlignment="Left" Height="40" Margin="280,480,0,0" VerticalAlignment="Top" Width="380" FontSize="23" FontFamily="Arial"
+                  DisplayMemberPath="Firstname"/>
     </Grid>
 </Page>

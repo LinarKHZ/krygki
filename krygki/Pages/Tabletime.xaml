@@ -202,14 +202,8 @@
                                 <TextBlock 
                                            FontSize="22"
                                            TextWrapping="Wrap"
-                                           
+                                           Text="{Binding Path=User.Firstname}"
                                            >
-                                    <TextBlock.Text>
-                                        <MultiBinding >
-                                            <Binding Path="User.FirstName"/>
-                                            <Binding Path="User.LastName"/>
-                                        </MultiBinding>
-                                    </TextBlock.Text>
                                 </TextBlock>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
@@ -232,5 +226,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
+
+        <Border BorderBrush="#FFFF1111" BorderThickness="1" HorizontalAlignment="Left" Height="34" Margin="521,126,0,0" VerticalAlignment="Top" Width="140">
+            <CheckBox x:Name="Check" Content="Мои Уроки" FontSize="23" FontFamily="Arial" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
+        </Border>
     </Grid>
 </Page>

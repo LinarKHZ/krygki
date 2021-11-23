@@ -47,7 +47,7 @@ namespace krygki.Pages
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(new AddUser(null, false));
+            NavigationService.Navigate(new AddTimetable(null, false));
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -95,7 +95,7 @@ namespace krygki.Pages
 
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e) //редакт элемента
         {
-            //NavigationService.Navigate(new AddUser((sender as ListViewItem).DataContext as User, true));
+            NavigationService.Navigate(new AddTimetable((sender as ListViewItem).DataContext as Timetable, true));
         }
         private void Search_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -111,7 +111,7 @@ namespace krygki.Pages
                 Search.Text = "Название, комментарий...";
             else
             {
-                Refresh();
+                FilterSearch();
             }
         }
 
@@ -123,9 +123,14 @@ namespace krygki.Pages
             {
                 itemsInfo = itemsInfo.Where(i => i.Club.Name.ToLower().IndexOf(Search.Text.ToLower()) != -1 | i.User.Firstname.ToLower().IndexOf(Search.Text.ToLower()) != -1).ToList();
             }
-            TableL.ItemsSource = itemsInfo;
+            if (Check.IsChecked == true)
+            {
+                itemsInfo = itemsInfo.Where(u => u.Id_user == MainWindow.userValue.Id).ToList();
+            }
             if (itemsInfo != null)
+            {
                 TableL.ItemsSource = itemsInfo;
+            }
 
         }
 
@@ -144,7 +149,6 @@ namespace krygki.Pages
         }
 
         bool sortId = true;
-        bool sortName = true;
         bool sortBirthday = true;
         bool sortFirstname = true;
         bool sortPatronymic = true;
@@ -160,8 +164,8 @@ namespace krygki.Pages
         private void Firstname_Sort(object sender, MouseButtonEventArgs e)
         {
             if (sortFirstname)
-                TableL.ItemsSource = ((List<Timetable>)TableL.ItemsSource).OrderBy(x => x.Week1.Name).ToList();
-            else TableL.ItemsSource = ((List<Timetable>)TableL.ItemsSource).OrderByDescending(x => x.Week1.Name).ToList();
+                TableL.ItemsSource = ((List<Timetable>)TableL.ItemsSource).OrderBy(x => x.Week).ToList();
+            else TableL.ItemsSource = ((List<Timetable>)TableL.ItemsSource).OrderByDescending(x => x.Week).ToList();
             sortFirstname = !sortFirstname;
         }
         private void Category_Sort(object sender, MouseButtonEventArgs e)
@@ -193,5 +197,9 @@ namespace krygki.Pages
             sortPatronymic = !sortPatronymic;
         }
 
+        private void CheckBoxChanged(object sender, RoutedEventArgs e)
+        {
+            FilterSearch();
+        }
     }
 }

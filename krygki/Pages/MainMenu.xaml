@@ -39,5 +39,6 @@
         <Button x:Name="Exit" Content="Выход" HorizontalAlignment="Left" Margin="1810,960,0,0" VerticalAlignment="Top" Width="90" Height="50" FontSize="23" Click="Exit_Click"/>
         <Button x:Name="Click_6" Content="Новый ученик" HorizontalAlignment="Left" Margin="760,240,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Click_6_Click"/>
         <Button x:Name="Click_7" Content="Новый учитель" HorizontalAlignment="Left" Margin="760,340,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Click_7_Click"/>
+        <Button x:Name="Click_8" Content="Новый Расписание" HorizontalAlignment="Left" Margin="760,540,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Click_8_Click" />
     </Grid>
 </Page>
