@@ -16,10 +16,11 @@ namespace krygki
     {
         public int Id { get; set; }
         public int Id_history { get; set; }
-        public int Id_student { get; set; }
+        public int Id_studenttable { get; set; }
         public int Statusof { get; set; }
     
         public virtual History History { get; set; }
-        public virtual Student Student { get; set; }
+        public virtual StudentTable StudentTable { get; set; }
+        public virtual Status Status { get; set; }
     }
 }

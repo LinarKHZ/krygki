@@ -18,7 +18,6 @@ namespace krygki
         public Student()
         {
             this.StudentTable = new HashSet<StudentTable>();
-            this.Visiting = new HashSet<Visiting>();
         }
     
         public int Id { get; set; }
@@ -32,7 +31,6 @@ namespace krygki
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentTable> StudentTable { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Visiting> Visiting { get; set; }
+        public virtual Status Status1 { get; set; }
     }
 }

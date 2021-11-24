@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище krygkiDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище krygkiDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Club">
           <Key>
             <PropertyRef Name="Id" />
@@ -17,12 +17,19 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_timetable" Type="int" Nullable="false" />
-          <Property Name="Datetime" Type="datetime" Nullable="false" />
+          <Property Name="Datetime" Type="date" Nullable="false" />
           <Property Name="Statusof" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -33,7 +40,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Firstname" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -46,7 +53,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_student" Type="int" Nullable="false" />
           <Property Name="Id_timetable" Type="int" Nullable="false" />
         </EntityType>
@@ -64,7 +71,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Week" Type="int" Nullable="false" />
           <Property Name="Time_s" Type="time" Precision="7" Nullable="false" />
           <Property Name="Time_e" Type="time" Precision="7" Nullable="false" />
@@ -95,9 +102,9 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_history" Type="int" Nullable="false" />
-          <Property Name="Id_student" Type="int" Nullable="false" />
+          <Property Name="Id_studenttable" Type="int" Nullable="false" />
           <Property Name="Statusof" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Week">
@@ -107,6 +114,30 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Club_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Club" Type="Self.Club" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Club">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="Statusof" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_History_Timetable">
           <End Role="Timetable" Type="Self.Timetable" Multiplicity="1" />
           <End Role="History" Type="Self.History" Multiplicity="*" />
@@ -116,6 +147,18 @@
             </Principal>
             <Dependent Role="History">
               <PropertyRef Name="Id_timetable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="Status" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -155,6 +198,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Timetable_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Timetable">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Timetable_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
@@ -191,6 +246,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_User_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Visiting_History1">
           <End Role="History" Type="Self.History" Multiplicity="1" />
           <End Role="Visiting" Type="Self.Visiting" Multiplicity="*" />
@@ -203,15 +270,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Visiting_Student1">
-          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+        <Association Name="FK_Visiting_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
           <End Role="Visiting" Type="Self.Visiting" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Student">
+            <Principal Role="Status">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Visiting">
-              <PropertyRef Name="Id_student" />
+              <PropertyRef Name="Statusof" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visiting_StudentTable">
+          <End Role="StudentTable" Type="Self.StudentTable" Multiplicity="1" />
+          <End Role="Visiting" Type="Self.Visiting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentTable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Visiting">
+              <PropertyRef Name="Id_studenttable" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -219,6 +298,7 @@
           <EntitySet Name="Club" EntityType="Self.Club" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentTable" EntityType="Self.StudentTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -226,9 +306,21 @@
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Visiting" EntityType="Self.Visiting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Week" EntityType="Self.Week" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Club_Status" Association="Self.FK_Club_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Club" EntitySet="Club" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Status" Association="Self.FK_History_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
           <AssociationSet Name="FK_History_Timetable" Association="Self.FK_History_Timetable">
             <End Role="Timetable" EntitySet="Timetable" />
             <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Status" Association="Self.FK_Student_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Student" EntitySet="Student" />
           </AssociationSet>
           <AssociationSet Name="FK_StudentTable_Student" Association="Self.FK_StudentTable_Student">
             <End Role="Student" EntitySet="Student" />
@@ -240,6 +332,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Timetable_Club" Association="Self.FK_Timetable_Club">
             <End Role="Club" EntitySet="Club" />
+            <End Role="Timetable" EntitySet="Timetable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Timetable_Status" Association="Self.FK_Timetable_Status">
+            <End Role="Status" EntitySet="Status" />
             <End Role="Timetable" EntitySet="Timetable" />
           </AssociationSet>
           <AssociationSet Name="FK_Timetable_User" Association="Self.FK_Timetable_User">
@@ -254,17 +350,24 @@
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
+          <AssociationSet Name="FK_User_Status" Association="Self.FK_User_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
           <AssociationSet Name="FK_Visiting_History1" Association="Self.FK_Visiting_History1">
             <End Role="History" EntitySet="History" />
             <End Role="Visiting" EntitySet="Visiting" />
           </AssociationSet>
-          <AssociationSet Name="FK_Visiting_Student1" Association="Self.FK_Visiting_Student1">
-            <End Role="Student" EntitySet="Student" />
+          <AssociationSet Name="FK_Visiting_Status" Association="Self.FK_Visiting_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Visiting" EntitySet="Visiting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visiting_StudentTable" Association="Self.FK_Visiting_StudentTable">
+            <End Role="StudentTable" EntitySet="StudentTable" />
             <End Role="Visiting" EntitySet="Visiting" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="krygkiDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -276,6 +379,7 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Timetable" Relationship="Self.FK_Timetable_Club" FromRole="Club" ToRole="Timetable" />
+          <NavigationProperty Name="Status1" Relationship="krygkiDBModel.FK_Club_Status" FromRole="Club" ToRole="Status" />
         </EntityType>
         <EntityType Name="History">
           <Key>
@@ -283,10 +387,11 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Id_timetable" Type="Int32" Nullable="false" />
-          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Datetime" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Statusof" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Timetable" Relationship="Self.FK_History_Timetable" FromRole="History" ToRole="Timetable" />
-          <NavigationProperty Name="Visiting" Relationship="Self.FK_Visiting_History1" FromRole="History" ToRole="Visiting" />
+          <NavigationProperty Name="Visiting" Relationship="krygkiDBModel.FK_Visiting_History1" FromRole="History" ToRole="Visiting" />
+          <NavigationProperty Name="Status" Relationship="krygkiDBModel.FK_History_Status" FromRole="History" ToRole="Status" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -309,7 +414,7 @@
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <NavigationProperty Name="StudentTable" Relationship="Self.FK_StudentTable_Student" FromRole="Student" ToRole="StudentTable" />
-          <NavigationProperty Name="Visiting" Relationship="Self.FK_Visiting_Student1" FromRole="Student" ToRole="Visiting" />
+          <NavigationProperty Name="Status1" Relationship="krygkiDBModel.FK_Student_Status" FromRole="Student" ToRole="Status" />
         </EntityType>
         <EntityType Name="StudentTable">
           <Key>
@@ -320,6 +425,7 @@
           <Property Name="Id_timetable" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Student" Relationship="Self.FK_StudentTable_Student" FromRole="StudentTable" ToRole="Student" />
           <NavigationProperty Name="Timetable" Relationship="Self.FK_StudentTable_Timetable" FromRole="StudentTable" ToRole="Timetable" />
+          <NavigationProperty Name="Visiting" Relationship="krygkiDBModel.FK_Visiting_StudentTable" FromRole="StudentTable" ToRole="Visiting" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -348,6 +454,7 @@
           <NavigationProperty Name="StudentTable" Relationship="Self.FK_StudentTable_Timetable" FromRole="Timetable" ToRole="StudentTable" />
           <NavigationProperty Name="User" Relationship="Self.FK_Timetable_User" FromRole="Timetable" ToRole="User" />
           <NavigationProperty Name="Week1" Relationship="Self.FK_Timetable_Week" FromRole="Timetable" ToRole="Week" />
+          <NavigationProperty Name="Status1" Relationship="krygkiDBModel.FK_Timetable_Status" FromRole="Timetable" ToRole="Status" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -368,17 +475,7 @@
           <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
           <NavigationProperty Name="Timetable" Relationship="Self.FK_Timetable_User" FromRole="User" ToRole="Timetable" />
-        </EntityType>
-        <EntityType Name="Visiting">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Id_history" Type="Int32" Nullable="false" />
-          <Property Name="Id_student" Type="Int32" Nullable="false" />
-          <Property Name="Statusof" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="History" Relationship="Self.FK_Visiting_History1" FromRole="Visiting" ToRole="History" />
-          <NavigationProperty Name="Student" Relationship="Self.FK_Visiting_Student1" FromRole="Visiting" ToRole="Student" />
+          <NavigationProperty Name="Status1" Relationship="krygkiDBModel.FK_User_Status" FromRole="User" ToRole="Status" />
         </EntityType>
         <EntityType Name="Week">
           <Key>
@@ -412,18 +509,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Visiting_History1">
-          <End Role="History" Type="Self.History" Multiplicity="1" />
-          <End Role="Visiting" Type="Self.Visiting" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="History">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Visiting">
-              <PropertyRef Name="Id_history" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_User_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -444,18 +529,6 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="StudentTable">
-              <PropertyRef Name="Id_student" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Visiting_Student1">
-          <End Role="Student" Type="Self.Student" Multiplicity="1" />
-          <End Role="Visiting" Type="Self.Visiting" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Visiting">
               <PropertyRef Name="Id_student" />
             </Dependent>
           </ReferentialConstraint>
@@ -505,7 +578,6 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Timetable" EntityType="Self.Timetable" />
           <EntitySet Name="User" EntityType="Self.User" />
-          <EntitySet Name="Visiting" EntityType="Self.Visiting" />
           <EntitySet Name="Week" EntityType="Self.Week" />
           <AssociationSet Name="FK_Timetable_Club" Association="Self.FK_Timetable_Club">
             <End Role="Club" EntitySet="Club" />
@@ -515,10 +587,6 @@
             <End Role="Timetable" EntitySet="Timetable" />
             <End Role="History" EntitySet="History" />
           </AssociationSet>
-          <AssociationSet Name="FK_Visiting_History1" Association="Self.FK_Visiting_History1">
-            <End Role="History" EntitySet="History" />
-            <End Role="Visiting" EntitySet="Visiting" />
-          </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
@@ -526,10 +594,6 @@
           <AssociationSet Name="FK_StudentTable_Student" Association="Self.FK_StudentTable_Student">
             <End Role="Student" EntitySet="Student" />
             <End Role="StudentTable" EntitySet="StudentTable" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Visiting_Student1" Association="Self.FK_Visiting_Student1">
-            <End Role="Student" EntitySet="Student" />
-            <End Role="Visiting" EntitySet="Visiting" />
           </AssociationSet>
           <AssociationSet Name="FK_StudentTable_Timetable" Association="Self.FK_StudentTable_Timetable">
             <End Role="Timetable" EntitySet="Timetable" />
@@ -543,7 +607,162 @@
             <End Role="Week" EntitySet="Week" />
             <End Role="Timetable" EntitySet="Timetable" />
           </AssociationSet>
+          <EntitySet Name="Visiting" EntityType="krygkiDBModel.Visiting" />
+          <AssociationSet Name="FK_Visiting_History1" Association="krygkiDBModel.FK_Visiting_History1">
+            <End Role="History" EntitySet="History" />
+            <End Role="Visiting" EntitySet="Visiting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visiting_StudentTable" Association="krygkiDBModel.FK_Visiting_StudentTable">
+            <End Role="StudentTable" EntitySet="StudentTable" />
+            <End Role="Visiting" EntitySet="Visiting" />
+          </AssociationSet>
+          <EntitySet Name="Status" EntityType="krygkiDBModel.Status" />
+          <AssociationSet Name="FK_Club_Status" Association="krygkiDBModel.FK_Club_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Club" EntitySet="Club" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Status" Association="krygkiDBModel.FK_History_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Status" Association="krygkiDBModel.FK_Student_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Timetable_Status" Association="krygkiDBModel.FK_Timetable_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Timetable" EntitySet="Timetable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Status" Association="krygkiDBModel.FK_User_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visiting_Status" Association="krygkiDBModel.FK_Visiting_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Visiting" EntitySet="Visiting" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Visiting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_history" Type="Int32" Nullable="false" />
+          <Property Name="Id_studenttable" Type="Int32" Nullable="false" />
+          <Property Name="Statusof" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="History" Relationship="krygkiDBModel.FK_Visiting_History1" FromRole="Visiting" ToRole="History" />
+          <NavigationProperty Name="StudentTable" Relationship="krygkiDBModel.FK_Visiting_StudentTable" FromRole="Visiting" ToRole="StudentTable" />
+          <NavigationProperty Name="Status" Relationship="krygkiDBModel.FK_Visiting_Status" FromRole="Visiting" ToRole="Status" />
+        </EntityType>
+        <Association Name="FK_Visiting_History1">
+          <End Type="krygkiDBModel.History" Role="History" Multiplicity="1" />
+          <End Type="krygkiDBModel.Visiting" Role="Visiting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="History">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Visiting">
+              <PropertyRef Name="Id_history" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visiting_StudentTable">
+          <End Type="krygkiDBModel.StudentTable" Role="StudentTable" Multiplicity="1" />
+          <End Type="krygkiDBModel.Visiting" Role="Visiting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentTable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Visiting">
+              <PropertyRef Name="Id_studenttable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Club" Relationship="krygkiDBModel.FK_Club_Status" FromRole="Status" ToRole="Club" />
+          <NavigationProperty Name="History" Relationship="krygkiDBModel.FK_History_Status" FromRole="Status" ToRole="History" />
+          <NavigationProperty Name="Student" Relationship="krygkiDBModel.FK_Student_Status" FromRole="Status" ToRole="Student" />
+          <NavigationProperty Name="Timetable" Relationship="krygkiDBModel.FK_Timetable_Status" FromRole="Status" ToRole="Timetable" />
+          <NavigationProperty Name="User" Relationship="krygkiDBModel.FK_User_Status" FromRole="Status" ToRole="User" />
+          <NavigationProperty Name="Visiting" Relationship="krygkiDBModel.FK_Visiting_Status" FromRole="Status" ToRole="Visiting" />
+        </EntityType>
+        <Association Name="FK_Club_Status">
+          <End Type="krygkiDBModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="krygkiDBModel.Club" Role="Club" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Club">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Status">
+          <End Type="krygkiDBModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="krygkiDBModel.History" Role="History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="Statusof" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Status">
+          <End Type="krygkiDBModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="krygkiDBModel.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Timetable_Status">
+          <End Type="krygkiDBModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="krygkiDBModel.Timetable" Role="Timetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Timetable">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Status">
+          <End Type="krygkiDBModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="krygkiDBModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visiting_Status">
+          <End Type="krygkiDBModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="krygkiDBModel.Visiting" Role="Visiting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Visiting">
+              <PropertyRef Name="Statusof" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -644,21 +863,29 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Visiting">
-            <EntityTypeMapping TypeName="krygkiDBModel.Visiting">
-              <MappingFragment StoreEntitySet="Visiting">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Id_history" ColumnName="Id_history" />
-                <ScalarProperty Name="Id_student" ColumnName="Id_student" />
-                <ScalarProperty Name="Statusof" ColumnName="Statusof" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Week">
             <EntityTypeMapping TypeName="krygkiDBModel.Week">
               <MappingFragment StoreEntitySet="Week">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Visiting">
+            <EntityTypeMapping TypeName="krygkiDBModel.Visiting">
+              <MappingFragment StoreEntitySet="Visiting">
+                <ScalarProperty Name="Statusof" ColumnName="Statusof" />
+                <ScalarProperty Name="Id_studenttable" ColumnName="Id_studenttable" />
+                <ScalarProperty Name="Id_history" ColumnName="Id_history" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="krygkiDBModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

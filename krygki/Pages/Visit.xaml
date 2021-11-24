@@ -1,4 +1,4 @@
-﻿<Page x:Class="krygki.Pages.TableStudent"
+﻿<Page x:Class="krygki.Pages.Visit"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -11,7 +11,7 @@
 
     <Grid Background="#f5f0ec">
         <Rectangle Fill="#FF5A5AFF" Height="180" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="80,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" FontFamily="Arial"><Run Text="Список "/><Run Text="Студентов"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="80,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="48" FontFamily="Arial" Text="Расписание"/>
         <StackPanel
                     HorizontalAlignment="Right"
                     Margin="0,30,80,961">
@@ -124,13 +124,13 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Width="190">
+                    <GridViewColumn Width="200">
                         <GridViewColumn.Header>
-                            <TextBlock Text="Фамилия" MouseLeftButtonDown="Firstname_Sort"/>
+                            <TextBlock Text="Дата" MouseLeftButtonDown="Firstname_Sort"/>
                         </GridViewColumn.Header>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Firstname}"
+                                <TextBlock Text="{Binding Path= History.Datetime , StringFormat={}{0:dd.MM.yyyy}}"
                                            FontSize="22"
                                            Margin="20,0,0,0"
                                            TextWrapping="Wrap"
@@ -139,27 +139,13 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Width="190">
+                    <GridViewColumn Width="200">
                         <GridViewColumn.Header>
-                            <TextBlock Text="Имя" MouseLeftButtonDown="Name_Sort"/>
+                            <TextBlock Text="Id студента" />
                         </GridViewColumn.Header>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding LastName}"
-                                           FontSize="22"
-                                           TextWrapping="Wrap"
-                                           
-                                           />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Width="190" >
-                        <GridViewColumn.Header>
-                            <TextBlock Text="Отчество" MouseLeftButtonDown="Patronymic_Sort"/>
-                        </GridViewColumn.Header>
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Patronymic}"
+                                <TextBlock Text="{Binding Path=  StudentTable.Student.Id}"
                                            FontSize="22"
                                            TextWrapping="Wrap"
                                            
@@ -169,11 +155,11 @@
                     </GridViewColumn>
                     <GridViewColumn Width="200">
                         <GridViewColumn.Header>
-                            <TextBlock Text="Дата рождения" MouseLeftButtonDown="Birthday_Sort"/>
+                            <TextBlock Text="Название кружка"/>
                         </GridViewColumn.Header>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Path= Birthday, StringFormat={}{0:dd.MM.yyyy}}"
+                                <TextBlock Text="{Binding Path= History.Timetable.Club.Name}"
                                            FontSize="22"
                                            Margin="20,0,0,0"
                                            
@@ -181,24 +167,29 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Width="190" Header="Телефон">
+
+                    <GridViewColumn Width="200">
+                        <GridViewColumn.Header>
+                            <TextBlock Text="Имя "/>
+                        </GridViewColumn.Header>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Phone}"
+                                <TextBlock Text="{Binding Path= History.Timetable.Club.Name}"
                                            FontSize="22"
-                                           TextWrapping="Wrap"
+                                           Margin="20,0,0,0"
                                            
                                            />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+
                     <GridViewColumn Width="190">
                         <GridViewColumn.Header>
                             <TextBlock Text="Статус" MouseLeftButtonDown="Status_Sort"/>
                         </GridViewColumn.Header>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Path = Status1.Name}"
+                                <TextBlock Text="{Binding Path = Status}"
                                            FontSize="22"
                                            TextWrapping="Wrap"
                                            
@@ -209,5 +200,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
+
     </Grid>
 </Page>

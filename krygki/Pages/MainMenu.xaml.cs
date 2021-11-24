@@ -34,8 +34,10 @@ namespace krygki.Pages
             if (user.Id_role != 1)
             {
                 AdminText.Visibility = Visibility.Hidden;
-                //Click_4.Visibility = Visibility.Hidden;
-                //Click_5.Visibility = Visibility.Hidden;
+                Click_5.Visibility = Visibility.Hidden;
+                Click_6.Visibility = Visibility.Hidden;
+                Click_7.Visibility = Visibility.Hidden;
+                Click_8.Visibility = Visibility.Hidden;
             }
             CompositionTarget.Rendering += CompositionTarget_Rendering;
         }
@@ -68,7 +70,7 @@ namespace krygki.Pages
 
         private void Click_4_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(new Authorization());
+            NavigationService.Navigate(new TableHistory());
         }
 
         private void Click_5_Click(object sender, RoutedEventArgs e)

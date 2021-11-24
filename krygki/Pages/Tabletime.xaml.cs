@@ -25,6 +25,11 @@ namespace krygki.Pages
         {
             InitializeComponent();
             TableL.ItemsSource = MainWindow.DB.Timetable.OrderBy(i => i.Id).ToList();
+            if (MainWindow.userValue.Id_role != 1)
+            {
+                add1.Visibility = Visibility.Hidden;
+                ext1.Visibility = Visibility.Hidden;
+            }
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

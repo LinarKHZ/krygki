@@ -33,7 +33,8 @@ namespace krygki
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Timetable> Timetable { get; set; }
         public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<Visiting> Visiting { get; set; }
         public virtual DbSet<Week> Week { get; set; }
+        public virtual DbSet<Visiting> Visiting { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
     }
 }

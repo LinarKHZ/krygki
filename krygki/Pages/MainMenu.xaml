@@ -35,10 +35,10 @@
         <TextBlock x:Name="time" HorizontalAlignment="Left" Margin="1440,852,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="36" FontFamily="Arial" Height="60" Width="320" TextAlignment="Center"/>
         <Button x:Name="Click_4" Content="История посещения" HorizontalAlignment="Left" Margin="480,540,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Click_4_Click" />
         <TextBlock x:Name="AdminText" HorizontalAlignment="Left" Margin="1150,80,0,0" TextWrapping="Wrap" Text="Admin Panel" VerticalAlignment="Top" FontSize="23" FontFamily="Arial"/>
-        <Button x:Name="Click_5" Content="Новый предмет" HorizontalAlignment="Left" Margin="760,440,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Click_5_Click" />
+        <Button x:Name="Click_5" Content="Новый предмет" HorizontalAlignment="Left" Margin="960,440,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Click_5_Click" />
         <Button x:Name="Exit" Content="Выход" HorizontalAlignment="Left" Margin="1810,960,0,0" VerticalAlignment="Top" Width="90" Height="50" FontSize="23" Click="Exit_Click"/>
-        <Button x:Name="Click_6" Content="Новый ученик" HorizontalAlignment="Left" Margin="760,240,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Click_6_Click"/>
-        <Button x:Name="Click_7" Content="Новый учитель" HorizontalAlignment="Left" Margin="760,340,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Click_7_Click"/>
-        <Button x:Name="Click_8" Content="Новый Расписание" HorizontalAlignment="Left" Margin="760,540,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Click_8_Click" />
+        <Button x:Name="Click_6" Content="Новый ученик" HorizontalAlignment="Left" Margin="960,240,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Click_6_Click"/>
+        <Button x:Name="Click_7" Content="Новый учитель" HorizontalAlignment="Left" Margin="960,340,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Click_7_Click"/>
+        <Button x:Name="Click_8" Content="Новый Расписание" HorizontalAlignment="Left" Margin="960,540,0,0" VerticalAlignment="Top" Width="240" Height="80" FontSize="23" Click="Click_8_Click" />
     </Grid>
 </Page>

@@ -46,6 +46,7 @@
             </Border>
         </StackPanel>
         <Button Content="Добавить"
+                x:Name="add1"
                 Background="#FFD1C921"
                 Foreground="White"
                 FontSize="16"
@@ -55,6 +56,7 @@
                 Margin="230,126,0,879"                
                 Click="Add_Click" FontFamily="Arial"/>
         <Button Content="Удалить"
+                x:Name="ext1"
                 Background="#FFD1C921"
                 Foreground="White"
                 FontSize="16"
@@ -215,7 +217,7 @@
                         </GridViewColumn.Header>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Path = Status}"
+                                <TextBlock Text="{Binding Path = Status1.Name}"
                                            FontSize="22"
                                            TextWrapping="Wrap"
                                            
@@ -228,7 +230,7 @@
         </ListView>
 
         <Border BorderBrush="#FFFF1111" BorderThickness="1" HorizontalAlignment="Left" Height="34" Margin="521,126,0,0" VerticalAlignment="Top" Width="140">
-            <CheckBox x:Name="Check" Content="Мои Уроки" FontSize="23" FontFamily="Arial" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged"/>
+            <CheckBox x:Name="Check" Content="Мои Уроки" FontSize="23" FontFamily="Arial" Checked="CheckBoxChanged" Unchecked="CheckBoxChanged" Background="White"/>
         </Border>
     </Grid>
 </Page>

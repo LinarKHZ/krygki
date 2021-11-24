@@ -37,5 +37,6 @@ namespace krygki
         public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Timetable> Timetable { get; set; }
+        public virtual Status Status1 { get; set; }
     }
 }
